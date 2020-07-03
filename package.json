@@ -1,0 +1,52 @@
+{
+  "name": "tsb-wp-theme",
+  "version": "1.0.0",
+  "description": "TSB WordPress Theme",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "WordPress",
+    "Theme"
+  ],
+  "author": "TSB",
+  "license": "ISC",
+  "themeName": "tsb-bocor",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/register": "^7.6.0",
+    "babel-eslint": "^7.2.1",
+    "babel-preset-es2015": "^6.24.0",
+    "browser-sync": "^2.18.8",
+    "del": "^2.2.2",
+    "fs-extra": "^2.1.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-changed": "^2.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-eslint": "^3.0.1",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-inject": "^5.0.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-sizereport": "^1.2.0",
+    "gulp-sourcemaps": "^2.5.1",
+    "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8",
+    "json-file": "^0.1.0",
+    "node-fs": "^0.1.7",
+    "require-dir": "^0.3.1"
+  },
+  "dependencies": {
+    "jquery-validation": "^1.19.1",
+    "vinyl-paths": "^3.0.0"
+  },
+  "main": "gulpfile.js"
+}

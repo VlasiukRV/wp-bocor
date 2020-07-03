@@ -1,0 +1,11 @@
+#excluded directories
+.idea/
+node_modules/
+wp-data/
+wp-app/
+dist/
+
+#excluded files
+.env
+package-lock.json
+*.log
