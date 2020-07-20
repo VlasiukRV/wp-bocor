@@ -1,6 +1,6 @@
 <?php
-require_once locate_template('/php/spg-icons.php' );
-require_once locate_template('/php/MailSender.php' );
+//require_once locate_template('/php/spg-icons.php' );
+//require_once locate_template('/php/MailSender.php' );
 
 if (!class_exists('ThemeFunctions')) {
 
