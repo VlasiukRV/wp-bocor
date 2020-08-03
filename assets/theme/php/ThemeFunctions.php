@@ -1,6 +1,6 @@
 <?php
-//require_once locate_template('/php/spg-icons.php' );
-//require_once locate_template('/php/MailSender.php' );
+// Custom Elementor_Bocor_Extension .
+require_once locate_template( 'php/elementor-extension/Elementor_Bocor_Extension.php' );
 
 if (!class_exists('ThemeFunctions')) {
 
@@ -8,33 +8,19 @@ if (!class_exists('ThemeFunctions')) {
     {
         private $theme;
 
-        function __construct(ThemeSpg $theme){
+        function __construct(ThemeBocor $theme){
             $this->theme = $theme;
         }
 
         public function add_actions() {
-            $mailSender = new MailSender();
-
-            add_action( 'wp_ajax_send_mail', array( $mailSender, 'send' ) );
-            add_action( 'wp_ajax_nopriv_send_mail', array( $mailSender, 'send' ) );
             add_action( 'elementor/widgets/widgets_registered', array( $this->theme, 'init_elementor_blocks' ), 26 );
 
-            add_action( 'get_custom_logo', array( $this, 'get_navbar_brand_html' ) );
-            add_action( 'customize_register', array( $this, 'add_theme_customize_option' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_theme_frontend'), 111 );
 
         }
 
         public function add_filters() {
 
-            add_filter( 'widget_nav_menu_args', array( $this, 'change_widget_nav_menu_args' ) );
-            add_filter( 'nav_menu_link_attributes', array( $this, 'add_nav_menu_link_attributes' ));
-
-            add_filter( 'tommusrhodus_add_footer_layouts', array( $this, 'add_custom_footer_layouts') );
-            add_filter( 'tommusrhodus_add_client_layouts', array( $this, 'add_custom_client_layouts') );
-            add_filter( 'tommusrhodus_add_portfolio_single_layouts', array( $this, 'add_custom_portfolio_single_layouts') );
-            add_filter( 'tommusrhodus_add_portfolio_layouts', array( $this, 'add_custom_portfolio_layouts') );
-            add_filter( 'tommusrhodus_add_blog_layouts', array( $this, 'add_custom_blog_layouts') );
         }
 
         public function register_sidebar() {
@@ -73,20 +59,42 @@ if (!class_exists('ThemeFunctions')) {
         }
 
         public function enqueue_theme_styles() {
+            $theme_version = wp_get_theme()->get('Version');
+
             wp_enqueue_style('uptime-style', get_template_directory_uri() . '/style.css');
             wp_enqueue_style('uptime-child-style',
                 get_stylesheet_directory_uri() . '/style.css',
                 array('uptime-style'),
-                wp_get_theme()->get('Version')
+                $theme_version
             );
-            wp_enqueue_style('style-spg', get_stylesheet_directory_uri() . '/css/style-spg.css');
-            wp_add_inline_style('uptime-child-style', $this->get_skin_inline_style());
+            wp_enqueue_style('style-spg', get_stylesheet_directory_uri() . '/css/bocor-style.css');
+
+           //wp_add_inline_style('uptime-child-style', $this->get_skin_inline_style());
+
+                // Add Vendor CSS Files.
+                wp_enqueue_style( 'bootstrap-css',  get_stylesheet_directory_uri() . '/vendor/bootstrap/css/bootstrap.min.css',    null, $theme_version );
+                wp_enqueue_style( 'icofont-css',    get_stylesheet_directory_uri() . '/vendor/icofont/icofont.min.css',            null, $theme_version );
+                wp_enqueue_style( 'boxicons-css',   get_stylesheet_directory_uri() . '/vendor/boxicons/css/boxicons.min.css',      null, $theme_version );
+                wp_enqueue_style( 'venobox-css',    get_stylesheet_directory_uri() . '/vendor/venobox/venobox.css',                null, $theme_version );
+                wp_enqueue_style( 'aos-css',        get_stylesheet_directory_uri() . '/vendor/aos/aos.css',                        null, $theme_version );
+
         }
 
         public function enqueue_theme_scripts() {
-            wp_register_script('scripts-spg', get_stylesheet_directory_uri() . '/js/scripts.js');
-            wp_enqueue_script('scripts-spg' );
-            wp_localize_script( 'scripts-spg', 'wp_var',
+            $theme_version = wp_get_theme()->get('Version');
+
+            // Vendor JS Files
+            wp_enqueue_script( 'jquery-js', get_stylesheet_directory_uri() . '/vendor/jquery/jquery.min.js', array(), $theme_version, true );
+            wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/vendor/bootstrap/js/bootstrap.bundle.min.js', array(), $theme_version, true );
+            wp_enqueue_script( 'jquery-easing-js', get_stylesheet_directory_uri() . '/vendor/jquery.easing/jquery.easing.min.js', array(), $theme_version, true );
+            wp_enqueue_script( 'php-email-form-validate-js', get_stylesheet_directory_uri() . '/vendor/php-email-form/validate.js', array(), $theme_version, true );
+            wp_enqueue_script( 'isotope-layout-js', get_stylesheet_directory_uri() . '/vendor/isotope-layout/isotope.pkgd.min.js', array(), $theme_version, true );
+            wp_enqueue_script( 'venobox-js', get_stylesheet_directory_uri() . '/vendor/venobox/venobox.min.js', array(), $theme_version, true );
+            wp_enqueue_script( 'aos-js', get_stylesheet_directory_uri() . '/vendor/aos/aos.js', array(), $theme_version, true );
+
+            wp_register_script('scripts-bocor', get_stylesheet_directory_uri() . '/js/main.js', array('jquery-js', 'bootstrap-js', 'jquery-easing-js', 'php-email-form-validate-js', 'isotope-layout-js', 'venobox-js', 'aos-js'));
+            wp_enqueue_script('scripts-bocor' );
+            wp_localize_script( 'scripts-bocor', 'wp_var',
                 array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
         }
 
@@ -110,158 +118,6 @@ if (!class_exists('ThemeFunctions')) {
             }
 
             return $output;
-
-        }
-
-        public function change_widget_nav_menu_args($nav_menu_args, $nav_menu, $args, $instance) {
-            $nav_menu_args['menu_class'] = 'nav';
-            $nav_menu_args['depth'] = 2;
-
-            return $nav_menu_args;
-        }
-
-        public function add_nav_menu_link_attributes($atts) {
-            $atts['itemprop'] = 'url';
-
-            return $atts;
-        }
-
-        public function add_custom_footer_layouts($options) {
-            $options['spg'] = 'Default SPG';
-            return $options;
-        }
-
-        public function add_custom_client_layouts($options) {
-            $options['Medium Logos'] = 'medium';
-            $options['Medium Logos, No Margin Bottom'] = 'medium-no-margin';
-            return $options;
-        }
-
-        public function add_custom_portfolio_single_layouts($options) {
-            $options['study-additional'] = 'Study (additional)';
-            return $options;
-        }
-
-        public function  add_custom_portfolio_layouts($options) {
-            $options['spg'] = 'SPG (additional)';
-            return $options;
-        }
-
-        public function add_custom_blog_layouts($options) {
-            $options['card-spg'] = 'Blog Cards (additional)';
-            return $options;
-        }
-
-        public function get_navbar_brand_html() {
-            $html =  '
-                <a class="navbar-brand" href="{{home_url}}">            
-                      {{custom_logo}}                        
-                </a>';
-
-            $html = str_replace('{{custom_logo}}', $this->theme->get_site_logo(), $html);
-            $html = str_replace('{{home_url}}', get_home_url(), $html);
-
-            return $html;
-        }
-
-        public function add_theme_customize_option(WP_Customize_Manager $wp_customize) {
-            $this->theme->theme_customize_add_option(
-                $wp_customize,
-                array(
-                    'id'            => 'footer_budges',
-                    'section'       => 'footer',
-
-                    'title'         => esc_html__( 'Footer budges', $this->theme->domain ),
-
-                    'default'   => '',
-                    'type'      => 'textarea',
-                )
-            );
-
-            $this->theme->theme_customize_add_option(
-                $wp_customize,
-                array(
-                    'id'            => 'footer_buttons',
-                    'section'       => 'footer',
-
-                    'title'         => esc_html__( 'Footer buttons', $this->theme->domain ),
-
-                    'default'   => '',
-                    'type'      => 'textarea',
-                )
-            );
-
-            $this->theme->theme_customize_add_option(
-                $wp_customize,
-                array(
-                    'id'            => 'link_text',
-                    'section'       => 'theme_colors',
-
-                    'title'         => esc_html__( 'Link Text Color', $this->theme->domain ),
-
-                    'default'   => '#3755BE',
-                    'type'      => 'color',
-                )
-            );
-
-            $this->theme->theme_customize_add_option(
-                $wp_customize,
-                array(
-                    'id'            => 'mail_receiver',
-                    'section'       => 'title_tagline',
-
-                    'title'         => esc_html__( 'Mail receiver', $this->theme->domain ),
-                    'description'   => esc_html__( 'Set email to receive messages', $this->theme->domain ),
-
-                    'option_type'   => 'option'
-                )
-            );
-
-            $this->theme->theme_customize_add_option(
-                $wp_customize,
-                array(
-                    'id'        => 'logo_width',
-                    'section'   => 'header',
-
-                    'title'     => esc_html__( 'Logo Width', $this->theme->domain ),
-                    'description'   => esc_html__( 'Set logo width (default auto)', $this->theme->domain ),
-
-                    'type'      => 'text',
-                    'default'   => 'auto',
-                )
-            );
-        }
-
-        public function get_skin_inline_style() {
-            $bg_dark = get_theme_mod('bg_dark', '#212529');
-
-            $logo_height = str_replace('px', '', get_theme_mod('logo_height', '26px')) . 'px';
-            $logo_width = str_replace('px', '', get_theme_mod('logo_width', 'auto'));
-            if ($logo_width != 'auto') {
-                $logo_width = $logo_width . 'px';
-            }
-            $link_text = get_theme_mod('link_text', '#3755BE');
-
-            return '
-        
-            a {
-                color: ' .$link_text. '
-            }
-        
-            .navbar-brand img {
-				max-height: ' . $logo_height . ';
-				width: ' . $logo_width . ';
-			}
-			
-            .navbar-brand svg {
-				max-height: ' . $logo_height . ';
-				width: ' . $logo_width . ';
-			}    
-            
-            .footer-strip {
-                background: '. $bg_dark . ' !important;
-            }			    
-            ';
 
         }
 

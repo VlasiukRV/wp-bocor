@@ -4,9 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
-require_once locate_template('/php/ThemeFunctions.php' );
+require_once locate_template( '/php/ThemeFunctions.php' );
 
-if (!class_exists('ThemeSpg')) {
+
+if (!class_exists('ThemeBocor')) {
 
     class ThemeBocor
     {
@@ -28,12 +29,12 @@ if (!class_exists('ThemeSpg')) {
         }
 
         public function init() {
-//
-//            $theme_functions = new ThemeFunctions($this);
-//
-//            $theme_functions->add_actions();
-//            $theme_functions->add_filters();
-//            $theme_functions->add_shortcodes();
+
+            $theme_functions = new ThemeFunctions($this);
+
+            $theme_functions->add_actions();
+            $theme_functions->add_filters();
+            $theme_functions->add_shortcodes();
 //
 //            add_action( 'widgets_init', array($theme_functions, 'register_sidebar') );
 //            $this->init_widgets();
