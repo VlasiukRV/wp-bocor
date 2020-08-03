@@ -158,7 +158,7 @@ class Elementor_ContactForm_Widget extends \Elementor\Widget_Base {
 
         $settings = $this->get_settings_for_display();
 
-        $html = wp_oembed_get( $settings['url'] );
+        $html = wp_oembed_get( $settings['contact_email'] );
 
         $html = sprintf(
             '

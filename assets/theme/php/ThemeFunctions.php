@@ -92,7 +92,7 @@ if (!class_exists('ThemeFunctions')) {
             wp_enqueue_script( 'venobox-js', get_stylesheet_directory_uri() . '/vendor/venobox/venobox.min.js', array(), $theme_version, true );
             wp_enqueue_script( 'aos-js', get_stylesheet_directory_uri() . '/vendor/aos/aos.js', array(), $theme_version, true );
 
-            wp_register_script('scripts-bocor', get_stylesheet_directory_uri() . '/js/main.js', array('jquery-js', 'bootstrap-js', 'jquery-easing-js', 'php-email-form-validate-js', 'isotope-layout-js', 'venobox-js', 'aos-js'));
+            wp_register_script('scripts-bocor', get_stylesheet_directory_uri() . '/js/main.js', array('jquery-js', 'bootstrap-js', 'jquery-easing-js', 'php-email-form-validate-js', 'isotope-layout-js', 'venobox-js', 'aos-js'), $theme_version, true);
             wp_enqueue_script('scripts-bocor' );
             wp_localize_script( 'scripts-bocor', 'wp_var',
                 array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
