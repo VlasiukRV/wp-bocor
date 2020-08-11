@@ -270,6 +270,9 @@ final class Elementor_Bocor_Extension {
         require_once( __DIR__ . '/widgets/Elementor_FAQ_Widget.php' );
         require_once( __DIR__ . '/widgets/Elementor_Team_Widget.php' );
         require_once( __DIR__ . '/widgets/Elementor_Features_Widget.php' );
+        require_once( __DIR__ . '/widgets/Elementor_Services_Widget.php' );
+        require_once( __DIR__ . '/widgets/Elementor_About_Widget.php' );
+        require_once( __DIR__ . '/widgets/Elementor_Hero_Widget.php' );
 
         // Register widget
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_oEmbed_Widget() );
@@ -277,6 +280,9 @@ final class Elementor_Bocor_Extension {
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_FAQ_Widget() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Team_Widget() );
         \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Features_Widget() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Services_Widget() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_About_Widget() );
+        \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Elementor_Hero_Widget() );
 
     }
 

@@ -144,10 +144,12 @@ class Elementor_Services_Widget extends \Elementor\Widget_Base
             [
                 'label' => __('Text Position', 'elementor-bocor-extension'),
                 'type' => \Elementor\Controls_Manager::URL,
-                'default' => 'right',
-                'options' => [
-                    'left' => __('Fade left', 'elementor-bocor-extension'),
-                    'right' => __('Fade right', 'elementor-bocor-extension'),
+                'placeholder' => __( 'https://your-link.com', 'plugin-domain' ),
+                'show_external' => true,
+                'default' => [
+                        'url' => '#',
+                        'is_external' => true,
+                        'nofollow' => true,
                 ],
             ]
         );
@@ -190,35 +192,32 @@ class Elementor_Services_Widget extends \Elementor\Widget_Base
         $settings = $this->get_settings_for_display();
 
 
-        $feature_items_html = '';
+        $services_items_html = '';
         foreach ($settings['list'] as $item) {
 
-            $feature_item_html_template = '';
+            $service_item_html_template = '
 
-            $feature_item_html_template_image = '            
-            <div class="col-md-5 aos-init aos-animate" data-aos="fade-right">
-                <img class="img-fluid" src="%3$s" alt="">
-            </div>
+            <div class="col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="fade-right">
+                        <div class="card">
+                          <div class="card-img">
+                            <img src="%3$s" alt="...">
+                          </div>
+                          <div class="card-body">
+                            <h5 class="card-title"><a href="">%1$s</a></h5>
+                            <p class="card-text">%2$s</p>
+                            <div class="read-more"><a href="%2$s"><i class="icofont-arrow-right"></i> Read More</a></div>
+                          </div>
+                        </div>
+                      </div>
+
             ';
 
-            $feature_item_html_template_content = '            
-            <div class="col-md-7 pt-4 aos-init aos-animate" data-aos="fade-left">
-                <h3>%1$s</h3>                
-                %2$s                                
-            </div>            
-            ';
-
-            if ($item['option_text_position'] == 'left') {
-                $feature_item_html_template = '' . $feature_item_html_template_image . '' . $feature_item_html_template_content;
-            } else {
-                $feature_item_html_template = '' . $feature_item_html_template_content . '' . $feature_item_html_template_image;
-            }
-
-            $feature_items_html = '' . $feature_items_html .
-                sprintf($feature_item_html_template,
+            $services_items_html = '' . $services_items_html .
+                sprintf($service_item_html_template,
                     esc_html__($item['list_title']),
                     $item['list_content'],
-                    $item['list_img']['url']
+                    $item['list_img']['url'],
+                    $item['list_content_url']['url']
                 );
 
         }
@@ -230,18 +229,18 @@ class Elementor_Services_Widget extends \Elementor\Widget_Base
                     <h2 data-aos="fade-in" class="aos-init aos-animate">%1$s</h2>
                     <p data-aos="fade-in" class="aos-init aos-animate">%2$s</p>
                 </div>
-                <div class="row content">
+                <div class="row">
                     %3$s
                 </div>
             </div>        
         ',
             esc_html__($settings['title']),
             esc_html__($settings['description']),
-            $feature_items_html
+            $services_items_html
         );
 
 
-        echo '<section id="features" class="features section-bg">';
+        echo '<section id="services" class="services section-bg">';
 
             echo($html);
 

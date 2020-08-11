@@ -6,7 +6,7 @@
  *
  * @since 1.0.0
  */
-class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
+class Elementor_Hero_Widget extends \Elementor\Widget_Base {
 
     /**
      * Get widget name.
@@ -19,7 +19,7 @@ class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
      * @return string Widget name.
      */
     public function get_name() {
-        return 'faq';
+        return 'hero';
     }
 
     /**
@@ -33,7 +33,7 @@ class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
      * @return string Widget title.
      */
     public function get_title() {
-        return __( 'FAQ', 'elementor-bocor-extension' );
+        return __( 'Hero', 'elementor-bocor-extension' );
     }
 
     /**
@@ -86,9 +86,9 @@ class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
             'title',
             [
                 'label' => __( 'Title', 'elementor-bocor-extension' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
                 'input_type' => 'text',
-                'placeholder' => __( 'Frequently Asked Questions', 'elementor-bocor-extension' ),
+                'placeholder' => __( 'Team', 'elementor-bocor-extension' ),
             ]
         );
 
@@ -102,43 +102,28 @@ class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
             ]
         );
 
-        $repeater = new \Elementor\Repeater();
-
-        $repeater->add_control(
-            'list_title', [
-                'label' => __( 'Title', 'plugin-domain' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => __( 'List Title' , 'plugin-domain' ),
-                'label_block' => true,
-            ]
-        );
-
-        $repeater->add_control(
-            'list_content', [
-                'label' => __( 'Content', 'plugin-domain' ),
-                'type' => \Elementor\Controls_Manager::WYSIWYG,
-                'default' => __( 'List Content' , 'plugin-domain' ),
-                'show_label' => false,
+        $this->add_control(
+            'img', [
+                'label' => __( 'Img', 'elementor-bocor-extension' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                        'url' => \Elementor\Utils::get_placeholder_image_src(),
+				],
             ]
         );
 
         $this->add_control(
-            'list',
+            'hero_url',
             [
-                'label' => __( 'Repeater List', 'plugin-domain' ),
-                'type' => \Elementor\Controls_Manager::REPEATER,
-                'fields' => $repeater->get_controls(),
+                'label' => __('Text Position', 'elementor-bocor-extension'),
+                'type' => \Elementor\Controls_Manager::URL,
+                'placeholder' => __( 'https://your-link.com', 'plugin-domain' ),
+                'show_external' => true,
                 'default' => [
-                    [
-                        'list_title' => __( 'Title #1', 'plugin-domain' ),
-                        'list_content' => __( 'Item content. Click the edit button to change this text.', 'plugin-domain' ),
-                    ],
-                    [
-                        'list_title' => __( 'Title #2', 'plugin-domain' ),
-                        'list_content' => __( 'Item content. Click the edit button to change this text.', 'plugin-domain' ),
-                    ],
+                        'url' => '#',
+                        'is_external' => true,
+                        'nofollow' => true,
                 ],
-                'title_field' => '{{{ list_title }}}',
             ]
         );
 
@@ -158,56 +143,33 @@ class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
 
         $settings = $this->get_settings_for_display();
 
-
-        $faq_items_html = '';
-        foreach (  $settings['list'] as $item ) {
-
-            $faq_items_html = '' . $faq_items_html . sprintf(
-    '
-            
-        <div class="row faq-item d-flex align-items-stretch aos-init aos-animate" data-aos="fade-up">
-          <div class="col-lg-5">
-            <i class="bx"></i>
-            <h4>%1$s</h4>
-          </div>
-          <div class="col-lg-7">
-            <p>
-              %2$s
-            </p>
-          </div>
-        </div><!-- End F.A.Q Item-->
-            
-            
-            ',
-            esc_html__( $item['list_title'] ),
-             $item['list_content']
-        );
-        }
-
         $html = sprintf(
             '
-        
+
         <div class="container">
+              <div class="row d-flex align-items-center" "="">
+              <div class="col-lg-6 py-5 py-lg-0 order-2 order-lg-1 aos-init aos-animate" data-aos="fade-right">
+                <h1>%1$s</h1>
+                <h2>%2$s</h2>
+                <a href="%4$s" class="btn-get-started scrollto">Get Started</a>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 hero-img aos-init aos-animate" data-aos="fade-left">
+                <img src="%3$s" class="img-fluid" alt="">
+              </div>
+            </div>
+            </div>
 
-        <div class="section-title">
-          <h2 data-aos="fade-in" class="aos-init aos-animate">%1$s</h2>
-          <p data-aos="fade-in" class="aos-init aos-animate">%2$s</p>
-        </div>
-
-        %3$s
-
-      </div>        
-        
         ',
             esc_html__( $settings['title'] ),
             esc_html__( $settings['description'] ),
-            $faq_items_html
+            esc_html__( $settings['img']['url'] ),
+            esc_html__( $settings['hero_url']['url'] )
         );
 
 
-        echo '<section id="faq" class="faq section-bg">';
+        echo '<section id="hero">';
 
-        echo ( $html );
+            echo ( $html );
 
         echo '</section>';
 
