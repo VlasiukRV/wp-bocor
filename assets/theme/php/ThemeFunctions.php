@@ -78,6 +78,8 @@ if (!class_exists('ThemeFunctions')) {
         public function enqueue_theme_scripts() {
             $theme_version = wp_get_theme()->get('Version');
 
+            wp_register_style('google-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i');
+
             // Vendor JS Files
             wp_enqueue_script( 'jquery-js', get_stylesheet_directory_uri() . '/vendor/jquery/jquery.min.js', array(), $theme_version, true );
             wp_enqueue_script( 'bootstrap-js', get_stylesheet_directory_uri() . '/vendor/bootstrap/js/bootstrap.bundle.min.js', array(), $theme_version, true );
