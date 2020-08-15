@@ -78,7 +78,7 @@ if (!class_exists('ThemeFunctions')) {
         public function enqueue_theme_scripts() {
             $theme_version = wp_get_theme()->get('Version');
 
-            wp_register_style('google-open-sans', 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i');
+            wp_register_style('google-open-sans', 'https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i');
 
             // Vendor JS Files
             wp_enqueue_script( 'jquery-js', get_stylesheet_directory_uri() . '/vendor/jquery/jquery.min.js', array(), $theme_version, true );
@@ -91,8 +91,7 @@ if (!class_exists('ThemeFunctions')) {
 
             wp_register_script('scripts-bocor', get_stylesheet_directory_uri() . '/js/main.js', array('jquery-js', 'bootstrap-js', 'jquery-easing-js', 'php-email-form-validate-js', 'isotope-layout-js', 'venobox-js', 'aos-js'), $theme_version, true);
             wp_enqueue_script('scripts-bocor' );
-            wp_localize_script( 'scripts-bocor', 'wp_var',
-                array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+            wp_localize_script( 'scripts-bocor', 'wp_var', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
         }
 
         public function spg_video_outline_button_shortcode($atts) {
