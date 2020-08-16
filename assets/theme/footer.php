@@ -22,7 +22,7 @@
 
                         <div class="row  justify-content-center">
                             <div class="col-lg-6">
-                                <h3>Bocor</h3>
+                                <h3>TARGETED SOLUTIONS FOR BUSINESS</h3>
                                 <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         All Rights Reserved
                     </div>
                     <div class="credits">
-                        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                        Designed by <a href="<?php echo esc_url( home_url( '/' ) ); ?>">TSB</a>
                     </div>
                 </div>
 
