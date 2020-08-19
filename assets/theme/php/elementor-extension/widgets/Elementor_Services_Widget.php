@@ -154,6 +154,19 @@ class Elementor_Services_Widget extends \Elementor\Widget_Base
             ]
         );
 
+        $repeater->add_control(
+            'fade_option',
+            [
+                'label' => __('Text Position', 'elementor-bocor-extension'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'right',
+                'options' => [
+                    'left' => __('Fade left', 'elementor-bocor-extension'),
+                    'right' => __('Fade right', 'elementor-bocor-extension'),
+                ],
+            ]
+        );
+
         $this->add_control(
             'list',
             [
@@ -195,9 +208,11 @@ class Elementor_Services_Widget extends \Elementor\Widget_Base
         $services_items_html = '';
         foreach ($settings['list'] as $item) {
 
+            $fade_option = ($item["fade_option"] == "right") ? "fade-right" : "fade-left";
+
             $service_item_html_template = '
 
-            <div class="col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="fade-right">
+            <div class="col-md-6 d-flex align-items-stretch aos-init aos-animate" data-aos="' . $fade_option . '">
                         <div class="card">
                           <div class="card-img">
                             <img src="%3$s" alt="...">
