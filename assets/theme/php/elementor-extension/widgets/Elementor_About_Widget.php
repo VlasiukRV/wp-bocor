@@ -126,7 +126,7 @@ class Elementor_About_Widget extends \Elementor\Widget_Base {
         $repeater->add_control(
             'list_content', [
                 'label' => __( 'Content', 'elementor-bocor-extension' ),
-                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'type' => \Elementor\Controls_Manager::WYSIWYG,
                 'default' => __( 'List Content' , 'elementor-bocor-extension' ),
                 'show_label' => false,
             ]
