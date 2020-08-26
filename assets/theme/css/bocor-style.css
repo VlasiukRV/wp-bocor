@@ -1197,7 +1197,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: url("wp-content/themes/wp-tsb/img/bg-06.png") center center no-repeat;
+  background: url("/wp-content/themes/wp-tsb/img/bg-06.png") center center no-repeat;
   /*background: #213b52;*/
   color: #fff;
   font-size: 14px;
