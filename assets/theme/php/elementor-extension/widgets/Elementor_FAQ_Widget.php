@@ -189,7 +189,7 @@ class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
             
             ',
              esc_html__( $item['list_title'] ),
-             $item['list_content']
+             $item['list_content'],
              $item['list_icon']
         );
         }
