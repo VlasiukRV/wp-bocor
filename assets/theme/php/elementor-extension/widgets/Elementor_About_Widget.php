@@ -184,7 +184,7 @@ class Elementor_About_Widget extends \Elementor\Widget_Base {
             $team_items_html = '' . $team_items_html . sprintf(
     '
             
-        <div class="col-md-6 icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-md-12 icon-box aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
                           <i class="%3$s"></i>
                           <h4><a href="#">%1$s</a></h4>
                           <p>%2$s</p>
