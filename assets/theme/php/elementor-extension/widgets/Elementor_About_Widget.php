@@ -204,8 +204,8 @@ class Elementor_About_Widget extends \Elementor\Widget_Base {
         <div class="container">
 
                 <div class="row">
-                  <div class="image col-xl-7 d-flex">
-                    <img src="%3$s" alt="...">
+                  <div class="col-xl-7 d-flex align-items-stretch justify-content-center justify-content-lg-start">
+                    <img class="image" src="%3$s" alt="...">
                   </div>
                   <div class="col-xl-5 pl-0 pl-lg-5 pr-lg-1 d-flex align-items-stretch">
                     <div class="content d-flex flex-column justify-content-center">
