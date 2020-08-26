@@ -59,9 +59,6 @@
                         <strong><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a></span></strong>.
                         All Rights Reserved
                     </div>
-                    <div class="credits">
-                        Designed by <a href="<?php echo esc_url( home_url( '/' ) ); ?>">TSB</a>
-                    </div>
                 </div>
 
             </footer>
