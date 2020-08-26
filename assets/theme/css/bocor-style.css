@@ -1071,7 +1071,7 @@ section {
   font-size: 15px;
 }
 
-.faq .faq-item faq-item-info-box {
+.faq .faq-item .faq-item-info-box {
   font-size: 15px;
   color: #848484;
   margin-left: 60px;
