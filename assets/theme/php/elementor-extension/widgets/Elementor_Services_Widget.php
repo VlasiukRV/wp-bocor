@@ -131,7 +131,7 @@ class Elementor_Services_Widget extends \Elementor\Widget_Base
 
         $repeater->add_control(
             'list_img', [
-                'label' => __('Content', 'plugin-domain'),
+                'label' => __('Image', 'plugin-domain'),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
