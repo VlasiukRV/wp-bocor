@@ -624,7 +624,7 @@ section {
 }
 
 @media (max-width: 667px) {
-  .about .image img {
+  .about img .image  {
     max-width: 100%;
     min-width: 400px;
   }
