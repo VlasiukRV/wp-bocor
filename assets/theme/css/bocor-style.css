@@ -1071,22 +1071,28 @@ section {
   font-size: 15px;
 }
 
-.faq .content ul {
+.faq .faq-item faq-item-info-box {
+  font-size: 15px;
+  color: #848484;
+  margin-left: 60px;
+}
+
+.faq .content .faq-item ul {
   list-style: none;
   padding: 0;
 }
 
-.faq .content ul li {
+.faq .content .faq-item ul li {
   padding-bottom: 10px;
 }
 
-.faq .content ul i {
+.faq .content .faq-item ul i {
   font-size: 20px;
   padding-right: 4px;
   color: #fdc134;
 }
 
-.faq .content p:last-child {
+.faq .content .faq-item p:last-child {
   margin-bottom: 0;
 }
 

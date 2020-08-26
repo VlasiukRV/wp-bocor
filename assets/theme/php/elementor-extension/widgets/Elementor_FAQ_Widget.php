@@ -170,7 +170,7 @@ class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
             <i class="bx"></i>
             <h4>%1$s</h4>
           </div>
-          <div class="col-lg-7">
+          <div class="col-lg-7 faq-item-info-box">
             <p>
               %2$s
             </p>
