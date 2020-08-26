@@ -409,6 +409,17 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 0 0 0;
   background: #213b52;
   background: linear-gradient(180deg, #213b52 0%, #213c54 35%, #204564 100%);
+  position: relative;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: url("/wp-content/themes/wp-tsb/img/bg-06.svg") center center no-repeat;
 }
 
 #hero h1 {
