@@ -122,6 +122,15 @@ class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        $repeater->add_control(
+            'list_icon', [
+                'label' => __( 'Content', 'plugin-domain' ),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => __( 'bx bxl-react' , 'plugin-domain' ),
+                'show_label' => false,
+            ]
+        );
+
         $this->add_control(
             'list',
             [
@@ -167,7 +176,7 @@ class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
             
         <div class="row faq-item d-flex align-items-stretch aos-init aos-animate" data-aos="fade-up">
           <div class="col-lg-5">
-            <i class="bx"></i>
+            <i class="%3$s"></i>
             <h4>%1$s</h4>
           </div>
           <div class="col-lg-7 faq-item-info-box">
@@ -179,8 +188,9 @@ class Elementor_FAQ_Widget extends \Elementor\Widget_Base {
             
             
             ',
-            esc_html__( $item['list_title'] ),
+             esc_html__( $item['list_title'] ),
              $item['list_content']
+             $item['list_icon']
         );
         }
 
