@@ -22,7 +22,7 @@
 
                         <div class="row  justify-content-center">
                             <div class="col-lg-6">
-                                <h3>TARGETED SOLUTIONS FOR BUSINESS</h3>
+                                <h3><?php bloginfo( 'name' ) ?></h3>
                                 <p>Sign up for our monthly newsletters to get the latest blog posts and updates.</p>
                             </div>
                         </div>
