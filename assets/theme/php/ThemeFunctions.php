@@ -64,7 +64,7 @@ if (!class_exists('ThemeFunctions')) {
             // Add Vendor CSS Files.
             //wp_enqueue_style( 'bootstrap-css',  get_stylesheet_directory_uri() . '/vendor/bootstrap/css/bootstrap.min.css',    null, $theme_version );
             wp_enqueue_style( 'icofont-css',    get_stylesheet_directory_uri() . '/vendor/icofont/icofont.min.css',            null, $theme_version );
-            //wp_enqueue_style( 'boxicons-css',   get_stylesheet_directory_uri() . '/vendor/boxicons/css/boxicons.min.css',      null, $theme_version );
+            wp_enqueue_style( 'boxicons-css',   get_stylesheet_directory_uri() . '/vendor/boxicons/css/boxicons.min.css',      null, $theme_version );
             //wp_enqueue_style( 'venobox-css',    get_stylesheet_directory_uri() . '/vendor/venobox/venobox.css',                null, $theme_version );
             //wp_enqueue_style( 'aos-css',        get_stylesheet_directory_uri() . '/vendor/aos/aos.css',                        null, $theme_version );
 
