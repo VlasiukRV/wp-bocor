@@ -88,7 +88,7 @@
 
 								}
 								?>
-                            <li class="get-started"><a href="#about">Get Started</a></li>
+                            <li class="get-started"><a href="#contact">Get Started</a></li>
 
                         </ul>
                     </nav><!-- .nav-menu -->
