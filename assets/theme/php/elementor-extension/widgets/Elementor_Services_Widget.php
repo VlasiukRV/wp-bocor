@@ -142,7 +142,7 @@ class Elementor_Services_Widget extends \Elementor\Widget_Base
         $repeater->add_control(
             'list_content_url',
             [
-                'label' => __('Text Position', 'elementor-bocor-extension'),
+                'label' => __('Content Url', 'elementor-bocor-extension'),
                 'type' => \Elementor\Controls_Manager::URL,
                 'placeholder' => __( 'https://your-link.com', 'plugin-domain' ),
                 'show_external' => true,
@@ -220,7 +220,7 @@ class Elementor_Services_Widget extends \Elementor\Widget_Base
                           <div class="card-body">
                             <h5 class="card-title"><a href="">%1$s</a></h5>
                             <p class="card-text">%2$s</p>
-                            <div class="read-more"><a href="%2$s"><i class="icofont-arrow-right"></i> Read More</a></div>
+                            <div class="read-more"><a href="%4$s"><i class="icofont-arrow-right"></i> Read More</a></div>
                           </div>
                         </div>
                       </div>
